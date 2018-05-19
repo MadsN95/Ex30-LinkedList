@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ex30_LinkedList
 {
-    public class LinkedList
+    public class LinkedList : IEnumerable
     {
         private class ListItem
         {
@@ -21,6 +22,27 @@ namespace Ex30_LinkedList
             public override string ToString()
             {
                 return Item.ToString(); 
+            }
+        }
+
+        private class LinkedListEnumerator : IEnumerator
+        {
+            public object Current
+            {
+                get
+                {
+
+                }
+            }
+
+            public bool MoveNext()
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Reset()
+            {
+                throw new NotImplementedException();
             }
         }
 
@@ -110,6 +132,11 @@ namespace Ex30_LinkedList
                 items[i] = item;
             }
             return String.Join("|", items.Select(x => x.ToString()));
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return new LinkedListEnumerator();
         }
     }
 }
